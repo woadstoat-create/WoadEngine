@@ -1,0 +1,13 @@
+/workspaces/WoadEngine/bin/Debug/net8.0/Engine.deps.json
+/workspaces/WoadEngine/bin/Debug/net8.0/Engine.dll
+/workspaces/WoadEngine/bin/Debug/net8.0/Engine.pdb
+/workspaces/WoadEngine/obj/Debug/net8.0/Engine.csproj.AssemblyReference.cache
+/workspaces/WoadEngine/obj/Debug/net8.0/Engine.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/WoadEngine/obj/Debug/net8.0/Engine.AssemblyInfoInputs.cache
+/workspaces/WoadEngine/obj/Debug/net8.0/Engine.AssemblyInfo.cs
+/workspaces/WoadEngine/obj/Debug/net8.0/Engine.csproj.CoreCompileInputs.cache
+/workspaces/WoadEngine/obj/Debug/net8.0/Engine.sourcelink.json
+/workspaces/WoadEngine/obj/Debug/net8.0/Engine.dll
+/workspaces/WoadEngine/obj/Debug/net8.0/refint/Engine.dll
+/workspaces/WoadEngine/obj/Debug/net8.0/Engine.pdb
+/workspaces/WoadEngine/obj/Debug/net8.0/ref/Engine.dll
