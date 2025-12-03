@@ -37,5 +37,10 @@ namespace WoadEngine.ECS
         {
             return _components.ContainsKey(typeof(T));
         }
+
+        public bool RemoveComponent<T>() where T : class, IComponent
+        {
+            return _components.Remove(typeof(T));
+        }
     }
 }
