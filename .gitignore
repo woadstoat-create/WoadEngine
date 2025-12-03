@@ -1,0 +1,89 @@
+############################
+# OS / Misc
+############################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+############################
+# Build output (dotnet / C#)
+############################
+[Bb]in/
+[Oo]bj/
+out/
+Debug/
+Release/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Ll]og/
+[Tt]est[Rr]esult*/
+
+# Rider / ReSharper caches
+_ReSharper*/
+*.DotSettings.user
+
+############################
+# MonoGame / Content Pipeline
+############################
+# Compiled content
+Content/bin/
+Content/obj/
+
+# Old MGCB cache files
+*.mgcache
+
+# If you ever have per-platform content output folders
+**/Content/*/bin/
+**/Content/*/obj/
+
+# Optional: if you *never* want to commit compiled XNBs anywhere
+# *.xnb
+
+############################
+# IDE / Editor junk
+############################
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# JetBrains / Rider
+.idea/
+*.sln.iml
+
+############################
+# NuGet / tooling
+############################
+# Old-style packages folder (SDK-style uses global cache, but just in case)
+packages/
+*.nupkg
+*.snupkg
+
+# dotnet tools local manifest cache
+.dotnet-tools/
+
+############################
+# Others
+############################
+# Crash / log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
