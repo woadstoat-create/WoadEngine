@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 
 namespace WoadEngine.ECS
 {
@@ -46,13 +47,13 @@ namespace WoadEngine.ECS
         {
             if (durationSeconds <= 0f) { Stop(); return; }
             _isFadingOut = true;
-            _fadeSpeed = volume / durationSeconds;
+            _fadeSpeed = Volume / durationSeconds;
         }
 
         public void Update(GameTime gameTime, IReadOnlyList<Entity> entities)
         {
             if (!_isFadingOut || _currentSong == null)
-                continue;
+                return;
 
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Volume -= _fadeSpeed * dt;
