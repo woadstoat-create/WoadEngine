@@ -2,9 +2,9 @@ namespace WoadEngine.ECS
 {
     public sealed class ParticleSystem : IUpdateSystem
     {
-        public void Update(GameTime gameTime, IReadOnlyList<Entity> entities)
+        public void Update(GameTime gameTime, IReadOnlyList<Entity> entities);
         {
-            float dt (float)gameTime.ElapsedGameTime.TotalSeconds;
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             foreach (var e in entities)
             {

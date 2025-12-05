@@ -41,7 +41,7 @@ namespace WoadEngine.ECS
 
         public void FadeOut(float durationSeconds)
         {
-            if (durationSeconds < = 0f) { Stop(); return; }
+            if (durationSeconds <= 0f) { Stop(); return; }
             _isFadingOut = true;
             _fadeSpeed = volume / durationSeconds;
         }
