@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+
 namespace WoadEngine.ECS
 {
     public sealed class ParticleComponent : IComponent
