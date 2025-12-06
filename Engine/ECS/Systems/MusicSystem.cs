@@ -161,8 +161,6 @@ namespace WoadEngine.ECS
             _isFadingOut = false;
         }
 
-        // === UPDATE ===========================================================
-
         public void Update(GameTime gameTime, System.Collections.Generic.IReadOnlyList<Entity> entities)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
