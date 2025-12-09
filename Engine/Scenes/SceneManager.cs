@@ -10,7 +10,11 @@ namespace WoadEngine.Scenes
         Splash,
         MainMenu,
         Play,
-        Pause,    
+        Pause, 
+        LevelSelect,
+        Options,
+        Survival,
+        Credits
     }
 
     public class SceneManager
