@@ -6,7 +6,7 @@ namespace WoadEngine.ECS
     public sealed class TextComponent : IComponent
     {
         public string Text = "";
-        public SpriteFont? Font;
+        public required SpriteFont Font;
         public Color Color = Color.White;
     }
 }
