@@ -18,8 +18,8 @@ namespace WoadEngine.ECS
 
         public void Update(GameTime gameTime, IReadOnlyList<Entity> entities)
         {
-            CameraComponent camera = null;
-            CameraShakeComponent shake = null;
+            CameraComponent? camera = null;
+            CameraShakeComponent? shake = null;
 
             // Find the first entity with a camera
             foreach (var e in entities)

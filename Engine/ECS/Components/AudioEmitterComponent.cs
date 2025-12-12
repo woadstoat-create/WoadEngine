@@ -19,7 +19,7 @@ namespace WoadEngine.ECS
         /// <summary>
         /// Try to get a sound by key.
         /// </summary>
-        public bool TryGetSound(string key, out SoundEffect sound)
+        public bool TryGetSound(string key, out SoundEffect? sound)
         {
             return Sounds.TryGetValue(key, out sound);
         }

@@ -21,7 +21,7 @@ namespace WoadEngine.ECS
             return component;
         }
 
-        public bool TryGetComponent<T>(out T component) where T : class, IComponent
+        public bool TryGetComponent<T>(out T? component) where T : class, IComponent
         {
             if (_components.TryGetValue(typeof(T), out var c))
             {
