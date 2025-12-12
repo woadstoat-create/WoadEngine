@@ -6,7 +6,7 @@ namespace WoadEngine.ECS
 {
     public sealed class MusicSystem : IUpdateSystem
     {
-        private Song _currentSong;
+        private Song? _currentSong;
         private float _targetVolume = 1f;
         private float _fadeSpeed = 0f;
         private bool _isFadingOut = false;

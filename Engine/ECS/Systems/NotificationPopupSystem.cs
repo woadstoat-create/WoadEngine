@@ -16,7 +16,7 @@ namespace WoadEngine.ECS
         private readonly int _viewportWidth;
         private readonly int _viewportHeight;
 
-        private Entity _currentToastEntity;
+        private Entity? _currentToastEntity;
         private float _timeRemaining;
 
         public NotificationPopupSystem(SpriteFont font, int viewportWidth, int viewportHeight)
