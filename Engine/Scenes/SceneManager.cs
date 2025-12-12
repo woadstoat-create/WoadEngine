@@ -20,7 +20,7 @@ namespace WoadEngine.Scenes
     public class SceneManager
     {
         private readonly Dictionary<SceneId, Scene> _scenes = new();
-        private required Scene _currentScene;
+        private Scene? _currentScene;
         private SceneId? _currentId;
 
         public void AddScene(SceneId id, Scene scene)
