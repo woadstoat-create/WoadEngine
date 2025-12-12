@@ -5,9 +5,9 @@ namespace WoadEngine.Dialogue
 {
     public class SpeakerStyle
     {
-        public string SpeakerId;
-        public string DisplayName;
+        public required string SpeakerId;
+        public required string DisplayName;
         public Color NameColor = Color.White;
-        public Texture2D Portrait;
+        public Texture2D? Portrait;
     }
 }
