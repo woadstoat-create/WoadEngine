@@ -13,8 +13,8 @@ namespace WoadEngine.Dialogue
         private readonly ChatLog _chatLog;
 
         public DialoguePlayerState State { get; private set;} = DialoguePlayerState.Idle;
-        public string CurrentSequenceId { get; private set; }
-        public int CurrentIndex { get; private set; }
+        public string CurrentSequenceId { get; private set; } = "";
+        public int CurrentIndex { get; private set; } = 0;
 
         public bool AutoPushToChatLog { get; set; } = true;
 
