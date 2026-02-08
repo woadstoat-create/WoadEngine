@@ -14,6 +14,18 @@ public class Sprite
     public float Width => _region.Width * _scale.X;
     public float Height => _region.Height * _scale.Y;
 
+    public float Rotation
+    {
+        get { return _rotation; }
+        set { _rotation = value; }
+    }
+
+    public Vector2 Scale
+    {
+        get { return _scale; }
+        set { _scale = value; }
+    }
+
     public Sprite(TextureRegion region)
     {
         _region = region;

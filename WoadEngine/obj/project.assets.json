@@ -279,11 +279,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\Pong\\Pong\\WoadEngine\\WoadEngine.csproj",
+      "projectUniqueName": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj",
       "projectName": "WoadEngine",
-      "projectPath": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\Pong\\Pong\\WoadEngine\\WoadEngine.csproj",
+      "projectPath": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj",
       "packagesPath": "C:\\Users\\Calum\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\Pong\\Pong\\WoadEngine\\obj\\",
+      "outputPath": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

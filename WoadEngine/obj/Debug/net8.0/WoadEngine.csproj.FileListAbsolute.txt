@@ -11,3 +11,16 @@ C:\Users\Calum\Desktop\Projects\Challenge\Pong\Pong\WoadEngine\obj\Debug\net8.0\
 C:\Users\Calum\Desktop\Projects\Challenge\Pong\Pong\WoadEngine\obj\Debug\net8.0\refint\WoadEngine.dll
 C:\Users\Calum\Desktop\Projects\Challenge\Pong\Pong\WoadEngine\obj\Debug\net8.0\WoadEngine.pdb
 C:\Users\Calum\Desktop\Projects\Challenge\Pong\Pong\WoadEngine\obj\Debug\net8.0\ref\WoadEngine.dll
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\bin\Debug\net8.0\WoadEngine.deps.json
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\bin\Debug\net8.0\WoadEngine.dll
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\bin\Debug\net8.0\WoadEngine.pdb
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\WoadEngine.csproj.AssemblyReference.cache
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\WoadEngine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\WoadEngine.AssemblyInfoInputs.cache
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\WoadEngine.AssemblyInfo.cs
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\WoadEngine.csproj.CoreCompileInputs.cache
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\WoadEngine.sourcelink.json
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\WoadEngine.dll
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\refint\WoadEngine.dll
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\WoadEngine.pdb
+C:\Users\Calum\Desktop\Projects\Challenge\WoadEngine\WoadEngine\WoadEngine\obj\Debug\net8.0\ref\WoadEngine.dll
