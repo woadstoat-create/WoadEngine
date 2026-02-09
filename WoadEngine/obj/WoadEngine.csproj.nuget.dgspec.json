@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj": {}
+    "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj": {
+    "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj",
+        "projectUniqueName": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj",
         "projectName": "WoadEngine",
-        "projectPath": "c:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj",
+        "projectPath": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\WoadEngine.csproj",
         "packagesPath": "C:\\Users\\Calum\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\obj\\",
+        "outputPath": "C:\\Users\\Calum\\Desktop\\Projects\\Challenge\\WoadEngine\\WoadEngine\\WoadEngine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
