@@ -1,28 +1,48 @@
 using System.Collections.Generic;
+using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using WoadEngine.ECS.Components.Rendering;
 
 namespace WoadEngine.Rendering;
 
 public class TextureAtlas
 {
     private Dictionary<string, TextureRegion> _regions;
+    private Dictionary<string, Animation> _animations;
     
     public Texture2D Texture { get; set; }
 
     public TextureAtlas()
     {
         _regions = new Dictionary<string, TextureRegion>();
+        _animations = new Dictionary<string, Animation>();
     }
 
     public TextureAtlas(Texture2D texture)
     {
         Texture = texture;
         _regions = new Dictionary<string, TextureRegion>();
+        _animations = new Dictionary<string, Animation>();
+    }
+
+    public void AddAnimation(string animationName, Animation animation)
+    {
+        _animations.Add(animationName, animation);
+    }
+
+    public Animation GetAnimation(string animationName)
+    {
+        return _animations[animationName];
+    }
+
+    public bool RemoveAnimation(string animationName)
+    {
+        return _animations.Remove(animationName);
     }
 
     public void AddRegion(string name, int x, int y, int width, int height)
@@ -76,14 +96,43 @@ public class TextureAtlas
                     }
                 }
 
+                var animationElements = root.Element("Animations").Elements("Animation");
+
+                if (animationElements != null)
+                {
+                    foreach (var animationElement in animationElements)
+                    {
+                        string name = animationElement.Attribute("name")?.Value;
+                        float delayInMilliseconds = float.Parse(animationElement.Attribute("delay")?.Value ?? "0");
+                        TimeSpan delay = TimeSpan.FromMilliseconds(delayInMilliseconds);
+
+                        List<TextureRegion> frames = new List<TextureRegion>();
+
+                        var frameElements = animationElement.Elements("Frame");
+
+                        if (frameElements != null)
+                        {
+                            foreach (var frameElement in frameElements)
+                            {
+                                string regionName = frameElement.Attribute("region").Value;
+                                TextureRegion region = atlas.GetRegion(regionName);
+                                frames.Add(region);
+                            }
+                        }
+
+                        Animation animation = new Animation(frames, delay);
+                        atlas.AddAnimation(name, animation);
+                    }
+                }
+
                 return atlas;
             }
         }
     }
 
-    public Sprite CreateSprite(string regionName)
+    public SpriteRenderer CreateSprite(string regionName)
     {
         TextureRegion region = GetRegion(regionName);
-        return new Sprite(region);
+        return SpriteRenderer.Create();
     }
 }
