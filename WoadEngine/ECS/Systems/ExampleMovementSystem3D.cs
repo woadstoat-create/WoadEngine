@@ -1,4 +1,4 @@
-using WoadEngine.ECS.Components;
+using WoadEngine.ECS.Components.Physics;
 
 namespace WoadEngine.ECS.Systems;
 
@@ -6,8 +6,8 @@ public sealed class MovementSystem3D : ISystem
 {
     public void Update(World world, float dt)
     {
-        var transforms = world.GetStore<Transform3D>();
-        var velocities = world.GetStore<Velocity3D>();
+        var transforms = world.GetStore<Transform>();
+        var velocities = world.GetStore<Velocity>();
 
         if (transforms.Count <= velocities.Count)
         {

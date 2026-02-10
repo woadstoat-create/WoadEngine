@@ -6,7 +6,7 @@
 
 using Microsoft.Xna.Framework;
 
-namespace WoadEngine.ECS.Components;
+namespace WoadEngine.ECS.Components.Physics;
 
 #region Transform Component
 
