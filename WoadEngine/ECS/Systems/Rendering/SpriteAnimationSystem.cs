@@ -47,6 +47,33 @@ public sealed class SpriteAnimationSystem : ISystem
                 }
             }
         }
+        else
+        {
+            var ents = animators.DenseEntities;
+            for (int i = 0; i < ents.Length; i++)
+            {
+                int id = ents[i];
+                if (!sprites.Has(id)) continue;
+
+                ref var a = ref animators.DenseComponents[i];
+                ref var s = ref sprites.Get(id);
+
+                a.Elapsed += TimeSpan.FromSeconds((double)(new decimal(dt)));
+
+                if (a.Elapsed >= a.Animation.Delay)
+                {
+                    a.Elapsed -= a.Animation.Delay;
+                    a.CurrentFrame++;
+
+                    if (a.CurrentFrame >= a.Animation.Frames.Count)
+                    {
+                        a.CurrentFrame = 0;
+                    }
+
+                    s.Region = a.Animation.Frames[a.CurrentFrame];
+                }
+            }
+        }
     }
 }
 #endregion
