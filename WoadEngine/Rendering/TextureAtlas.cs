@@ -130,9 +130,15 @@ public class TextureAtlas
         }
     }
 
-    public SpriteRenderer CreateSprite(string regionName)
-    {
-        TextureRegion region = GetRegion(regionName);
-        return SpriteRenderer.Create();
-    }
+    // public SpriteRenderer CreateSprite(string regionName)
+    // {
+    //     TextureRegion region = GetRegion(regionName);
+    //     return SpriteRenderer.Create();
+    // }
+
+    // public SpriteAnimator CreateSpriteAnimator(string animationName)
+    // {
+    //     Animation anim = GetAnimation(animationName);
+        
+    // }
 }
