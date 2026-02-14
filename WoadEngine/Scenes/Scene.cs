@@ -100,6 +100,9 @@ public abstract class Scene : IDisposable
     public virtual void Initialize()
     {
         LoadContent();
+        #if DEBUG
+        RenderSystems.Add(new DebugColliderRenderSystem());
+        #endif
     }
 
     /// <summary>

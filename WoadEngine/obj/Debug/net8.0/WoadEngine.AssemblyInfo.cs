@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WoadEngine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12815b41ee4c6d543bb96d016ecbfe359a2c81a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77a90716292c44f3cf14de20a3ee910b1f1b1abd")]
 [assembly: System.Reflection.AssemblyProductAttribute("WoadEngine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WoadEngine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
