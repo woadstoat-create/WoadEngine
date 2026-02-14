@@ -7,15 +7,18 @@ using WoadEngine.ECS;
 using WoadEngine.ECS.Components.Physics;
 using WoadEngine.ECS.Systems;
 
+namespace WoadEngine.Diagnostics;
+
 public sealed class DebugColliderRenderSystem : IRenderSystem
 {
     private readonly Texture2D _pixel;
-    private bool _enabled = true;
+    private bool _enabled = false;
 
     public DebugColliderRenderSystem()
     {
         _pixel = new Texture2D(Core.GraphicsDevice, 1, 1);
         _pixel.SetData(new[] { Color.White });
+        Logger.Info("DebugColliderRenderSystem Initialised.");
     }
 
     public void Draw(World world, float dt)
@@ -55,16 +58,16 @@ public sealed class DebugColliderRenderSystem : IRenderSystem
 
     private void DrawRectangle(SpriteBatch sb, Rectangle rect, Color color)
     {
-        const int thickness = 1;
+        const int thickness = 3;
 
         // Top
-        sb.Draw(_pixel, new Rectangle(rect.X, rect.Y, rect.Width, thickness), color);
+        sb.Draw(_pixel, new Rectangle(rect.X, rect.Y, rect.Width, thickness), null, color, 0, Vector2.Zero, SpriteEffects.None, 1);
         // Bottom
-        sb.Draw(_pixel, new Rectangle(rect.X, rect.Bottom, rect.Width, thickness), color);
+        sb.Draw(_pixel, new Rectangle(rect.X, rect.Bottom, rect.Width, thickness), null, color, 0, Vector2.Zero, SpriteEffects.None, 1);
         // Left
-        sb.Draw(_pixel, new Rectangle(rect.X, rect.Y, thickness, rect.Height), color);
+        sb.Draw(_pixel, new Rectangle(rect.X, rect.Y, thickness, rect.Height), null, color, 0, Vector2.Zero, SpriteEffects.None, 1);
         // Right
-        sb.Draw(_pixel, new Rectangle(rect.Right, rect.Y, thickness, rect.Height), color);
+        sb.Draw(_pixel, new Rectangle(rect.Right, rect.Y, thickness, rect.Height), null, color, 0, Vector2.Zero, SpriteEffects.None, 1);
     }
 }
 #endif

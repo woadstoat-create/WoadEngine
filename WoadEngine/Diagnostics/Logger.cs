@@ -10,7 +10,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace WoadEngine.Debug;
+namespace WoadEngine.Diagnostics;
 
 #region Logger
 /// <summary>

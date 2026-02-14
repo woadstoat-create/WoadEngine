@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using WoadEngine.ECS;
 using WoadEngine.ECS.Systems;
+using WoadEngine.Diagnostics;
 
 namespace WoadEngine.Scenes;
 
