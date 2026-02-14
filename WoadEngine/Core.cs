@@ -7,6 +7,7 @@ using WoadEngine.Scenes;
 using WoadEngine.Input;
 using WoadEngine.Audio;
 using System.Security.Cryptography;
+using WoadEngine.Debug;
 
 namespace WoadEngine;
 
@@ -72,6 +73,9 @@ public class Core : Game
         Input = new InputManager();
 
         Audio = new AudioController();
+
+        Logger.Init();
+        Logger.Info("Game initializing...");
     }
 
     protected override void UnloadContent()
@@ -113,6 +117,13 @@ public class Core : Game
         }
 
         base.Draw(gameTime);
+    }
+
+    protected override void OnExiting(object sender, ExitingEventArgs args)
+    {
+        Logger.Info("Exiting...");
+        Logger.Shutdown();
+        base.OnExiting(sender, args);
     }
 
     public static void ChangeScene(Scene next)

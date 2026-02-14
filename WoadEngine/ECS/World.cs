@@ -131,6 +131,23 @@ public sealed class World
         _generations[e.ID]++;
         _freeIds.Push(e.ID);
     }
+
+    /// <summary>
+    /// Tries to destroy an entity by its raw ID.
+    /// </summary>
+    /// <returns>True if the entity was alive and got destroyed; otherwise false.</returns>
+    public bool TryDestroyById(int id)
+    {
+        if (id < 0 || id >= _generations.Length)
+            return false;
+
+        var e = new Entity(id, _generations[id]);
+        if (!IsAlive(e))
+            return false;
+
+        DestroyEntity(e);
+        return true;
+    }
     #endregion
 
     #region Component API
