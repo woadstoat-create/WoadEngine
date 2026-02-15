@@ -1,3 +1,9 @@
+// --------------------------------------------------------------------------------------------
+// WoadEngine
+// Copyright (c) 2026 Woad Stoat Studios, All Rights Reserved.
+// This source code may not be copied, modified, disclosed or distributed without permission.
+//---------------------------------------------------------------------------------------------
+
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -26,6 +32,7 @@ public class Core : Game
     public static InputManager Input { get; private set; }
     public static bool ExitOnEscape { get; set; }
     public static AudioController Audio { get; private set; }
+    public static VersionOverlay VersionOverlay { get; private set; }
 
     private enum TransitionPhase
     {
@@ -92,6 +99,13 @@ public class Core : Game
         Logger.Info("Game initializing...");
     }
 
+    protected override void LoadContent()
+    {
+        base.LoadContent();
+        VersionOverlay = new VersionOverlay();
+
+    }
+
     protected override void UnloadContent()
     {
         Audio.Dispose();
@@ -134,6 +148,7 @@ public class Core : Game
         DrawFadeOverlay();
 
         base.Draw(gameTime);
+        VersionOverlay?.Draw();
     }
 
     protected override void OnExiting(object sender, ExitingEventArgs args)
