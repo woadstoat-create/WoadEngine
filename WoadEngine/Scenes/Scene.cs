@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Content;
 using WoadEngine.ECS;
 using WoadEngine.ECS.Systems;
 using WoadEngine.Diagnostics;
+using WoadEngine.Events;
 
 namespace WoadEngine.Scenes;
 
@@ -65,6 +66,8 @@ public abstract class Scene : IDisposable
     /// Render systems executed during <see cref="Draw(GameTime)"/>.
     /// </summary>
     protected List<IRenderSystem> RenderSystems { get; } = new();
+
+
     #endregion
 
     #region Construction
@@ -135,6 +138,10 @@ public abstract class Scene : IDisposable
         {
             UpdateSystems[i].Update(World, DeltaTime);
         }
+
+        World.Events.Flush();
+
+        World.Commands.Flush(World);
     }
 
     /// <summary>
