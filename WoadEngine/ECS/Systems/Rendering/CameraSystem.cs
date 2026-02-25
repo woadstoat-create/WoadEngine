@@ -48,6 +48,7 @@ public sealed class CameraSystem : ISystem
 
                 ref var tr = ref transforms.Get(id);
                 UpdateCameraMatrices(ref cam, ref tr);
+                world.SetActiveCamera(id);
 
                 // Remove return if we later want more than one active camera
                 return;
@@ -67,6 +68,8 @@ public sealed class CameraSystem : ISystem
                 if (!cam.IsActive) continue;
 
                 UpdateCameraMatrices(ref cam, ref tr);
+                world.SetActiveCamera(id);
+                
                 return;
             }
         }

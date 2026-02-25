@@ -6,6 +6,8 @@
 
 using System;
 using System.Collections.Generic;
+using WoadEngine.ECS.Components.Physics;
+using WoadEngine.ECS.Components.Rendering;
 using WoadEngine.Events;
 
 namespace WoadEngine.ECS;
@@ -55,6 +57,9 @@ public sealed class World
     
     public EventBus Events = new();
     public CommandBuffer Commands { get; } = new();
+
+    private int _activeCameraId = -1;
+
     #endregion
 
     #region Constructor
@@ -262,5 +267,32 @@ public sealed class World
         method?.Invoke(storeObj, new Object[] { entityId});
     }
     #endregion
+
+    internal void SetActiveCamera(int entityId) => _activeCameraId = entityId;
+
+    public bool TryGetActiveCamera(out int entityId)
+    {
+        entityId = _activeCameraId;
+        return entityId >= 0;
+    }
+
+    public bool TryGetActiveCamera(out int entityId, out Camera cam, out Transform tr)
+    {
+        entityId = _activeCameraId;
+        cam = default;
+        tr = default;
+
+        if (entityId < 0) return false;
+
+        var cams = GetStore<Camera>();
+        var trs = GetStore<Transform>();
+
+        if (!cams.Has(entityId) || !trs.Has(entityId))
+            return false;
+        
+        cam = cams.Get(entityId);
+        tr = trs.Get(entityId);
+        return true;
+    }
 }
 #endregion
