@@ -125,11 +125,6 @@ public class Core : Game
 
         UpdateSceneTransition(gameTime);
 
-        // if (s_nextScene != null)
-        // {
-        //     TransitionScene();
-        // }
-
         if (s_activeScene != null && s_transitionPhase != TransitionPhase.Switching)
         {
             s_activeScene.Update(gameTime);
