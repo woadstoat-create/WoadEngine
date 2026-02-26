@@ -6,6 +6,9 @@
 
 using System;
 using System.Collections.Generic;
+using WoadEngine.ECS.Components.Physics;
+using WoadEngine.ECS.Components.Rendering;
+using WoadEngine.Events;
 
 namespace WoadEngine.ECS;
 
@@ -50,7 +53,13 @@ public sealed class World
     /// Component stores, keyed by component type <see cref="Type"/>
     /// Each store instnace is a <see cref="ComponentStore{T}"/> for some T.  
     /// </summary>
-    private readonly Dictionary<Type, object> _stores = new();
+    private readonly Dictionary<Type, IComponentStore> _stores = new();
+    
+    public EventBus Events = new();
+    public CommandBuffer Commands { get; } = new();
+
+    private int _activeCameraId = -1;
+
     #endregion
 
     #region Constructor
@@ -89,8 +98,8 @@ public sealed class World
             Array.Resize(ref _generations, Math.Max(id + 1, _generations.Length * 2));
         
         // Ensure existing stores can address all current entity IDs
-        foreach (var storeObj in _stores.Values)
-            EnsureStoreEntityCapacity(storeObj, _generations.Length);
+        foreach (var store in _stores.Values)
+            store.EnsureEntityCapacity(_generations.Length);
         
         return new Entity(id, _generations[id]);
     }
@@ -124,8 +133,8 @@ public sealed class World
         if (!IsAlive(e)) return;
 
         // Remove components from all stores
-        foreach (var storeObj in _stores.Values)
-            RemoveEntityFromStore(storeObj, e.ID);
+        foreach (var store in _stores.Values)
+            store.RemoveEntity(e.ID);
 
         // Invalidate stale handles for this ID and recycle it.
         _generations[e.ID]++;
@@ -201,12 +210,23 @@ public sealed class World
     public ComponentStore<T> GetStore<T>() where T : struct
     {
         var type = typeof(T);
-        if (_stores.TryGetValue(type, out var existing))
-            return (ComponentStore<T>)existing;
 
-        // New stores should match current world capacity so sparse indexing is valid.
-        var store = new ComponentStore<T>(_generations.Length);
-        _stores[type] = store;
+        if (_stores.TryGetValue(type, out var store))
+            return (ComponentStore<T>)store;  // store is IComponentStore
+
+        var created = new ComponentStore<T>(_generations.Length);
+        _stores[type] = created;              // stored as IComponentStore
+        return created;
+    }
+
+    internal IComponentStore GetOrCreateStore(Type componentType)
+    {
+        if (_stores.TryGetValue(componentType, out var store))
+            return store;
+
+        var storeType = typeof(ComponentStore<>).MakeGenericType(componentType);
+        store = (IComponentStore)System.Activator.CreateInstance(storeType, _generations.Length)!;
+        _stores[componentType] = store;
         return store;
     }
     #endregion
@@ -247,5 +267,32 @@ public sealed class World
         method?.Invoke(storeObj, new Object[] { entityId});
     }
     #endregion
+
+    internal void SetActiveCamera(int entityId) => _activeCameraId = entityId;
+
+    public bool TryGetActiveCamera(out int entityId)
+    {
+        entityId = _activeCameraId;
+        return entityId >= 0;
+    }
+
+    public bool TryGetActiveCamera(out int entityId, out Camera cam, out Transform tr)
+    {
+        entityId = _activeCameraId;
+        cam = default;
+        tr = default;
+
+        if (entityId < 0) return false;
+
+        var cams = GetStore<Camera>();
+        var trs = GetStore<Transform>();
+
+        if (!cams.Has(entityId) || !trs.Has(entityId))
+            return false;
+        
+        cam = cams.Get(entityId);
+        tr = trs.Get(entityId);
+        return true;
+    }
 }
 #endregion

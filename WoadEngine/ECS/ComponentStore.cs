@@ -24,7 +24,7 @@ namespace WoadEngine.ECS;
 /// - <see cref="_denseComponents"/> stores the component data in dense order
 /// </summary>
 /// <typeparam name="T">Component type. Typically a struct (data-only).</typeparam>
-public sealed class ComponentStore<T> where T : struct
+public sealed class ComponentStore<T> : IComponentStore where T : struct
 {
     #region Fields
     /// <summary>
@@ -179,6 +179,21 @@ public sealed class ComponentStore<T> where T : struct
 
         // Mark entity as not having this component.
         _sparse[entityId] = 0;
+    }
+
+    void IComponentStore.EnsureEntityCapacity(int entityCapacity) => EnsureEntityCapacity(entityCapacity);
+
+    void IComponentStore.RemoveEntity(int entityId) => Remove(entityId);
+
+    void IComponentStore.AddDefault(int entityId)
+    {
+        _ = Add(entityId);
+    }
+
+    void IComponentStore.SetBoxed(int entityId, object value)
+    {
+        ref var c = ref Add(entityId);
+        c = (T)value;
     }
     #endregion
 
