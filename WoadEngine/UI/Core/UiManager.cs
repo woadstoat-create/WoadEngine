@@ -57,7 +57,16 @@ public sealed class UiManager
                 PressedElement.IsPressed = true;
                 PressedElement.OnMouseDown();
                 PointerConsumedThisFrame = true;
+
+                if (PressedElement is Slider slider)
+                    slider.JumpToMouse(mouse.Position);
             }
+        }
+
+        if (PressedElement is Slider activeSlider)
+        {
+            activeSlider.UpdateInteraction(mouse.Position, mouse.LeftDown);
+            PointerConsumedThisFrame = true;
         }
 
         if (mouse.LeftReleased)
@@ -69,10 +78,16 @@ public sealed class UiManager
                 bool clickedSameElement = HoveredElement == PressedElement;
                 PressedElement.IsPressed = false;
 
-                if (clickedSameElement)
+                if (clickedSameElement && PressedElement is not Slider)
                 {
                     SetFocus(PressedElement);
                     PressedElement.OnClick();
+                    PointerConsumedThisFrame = true;
+                }
+
+                if (PressedElement is Slider)
+                {
+                    SetFocus(PressedElement);
                     PointerConsumedThisFrame = true;
                 }
 
