@@ -155,7 +155,7 @@ public class Core : Game
             s_activeScene.Draw(gameTime);
         }
 
-        Ui.Draw();
+        
 
         DrawFadeOverlay();
 

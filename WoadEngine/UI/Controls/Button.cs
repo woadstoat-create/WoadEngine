@@ -22,6 +22,8 @@ public class Button : Panel
         if (!Visible)
             return;
 
+        base.Draw(whitePixel);
+
         var bg = ResolveBackgroundColor();
         var border = BorderColor ?? Style?.BorderColor ?? Color.Transparent;
         var borderThickness = BorderThickness ?? Style?.BorderThickness ?? 0;
@@ -41,13 +43,11 @@ public class Button : Panel
                 Bounds.Y + ((Bounds.Height - measure.Y) / 2f));
 
             var color = Enabled
-                ? (TextColor ?? Style?.ForegroundColor ?? Color.White)
+                ? (TextColor ?? Style?.TextColor ?? Color.White)
                 : (Style?.DisabledForegroundColor ?? Color.Gray);
 
             Core.SpriteBatch.DrawString(font, Text, pos, color);
         }
-
-        base.Draw(whitePixel);
     }
 
     private Color ResolveBackgroundColor()

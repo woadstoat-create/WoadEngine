@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using WoadEngine.Scenes;
+using WoadEngine.UI.Controls;
 
 namespace WoadEngine.UI;
 
@@ -16,7 +17,7 @@ public sealed class UiManager
     public UiElement? PressedElement { get; set; }
     public UiElement? FocusedElement { get; set; }
 
-    public UiTheme Theme { get; } = new();
+    public UiTheme Theme { get; set; } = new();
 
     public bool PointerConsumedThisFrame { get; private set; }
 
@@ -25,6 +26,7 @@ public sealed class UiManager
     {
         _whitePixel = new Texture2D(Core.GraphicsDevice, 1, 1);
         _whitePixel.SetData(new[] { Color.White });
+
     }
 
     public void Update(float dt, Rectangle viewportRect, UiMouseState mouse)
@@ -101,10 +103,8 @@ public sealed class UiManager
 
     public void Draw()
     {
-        Core.SpriteBatch.Begin();
         GlobalRoot?.Draw(_whitePixel);
         SceneRoot?.Draw(_whitePixel);
-        Core.SpriteBatch.End();
     }
 
     public UiElement? HitTest(Point point)
