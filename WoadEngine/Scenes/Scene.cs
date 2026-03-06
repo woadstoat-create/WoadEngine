@@ -12,6 +12,7 @@ using WoadEngine.ECS;
 using WoadEngine.ECS.Systems;
 using WoadEngine.Diagnostics;
 using WoadEngine.Events;
+using WoadEngine.UI;
 
 namespace WoadEngine.Scenes;
 
@@ -67,6 +68,7 @@ public abstract class Scene : IDisposable
     /// </summary>
     protected List<IRenderSystem> RenderSystems { get; } = new();
 
+    public UiElement? UiRoot { get; protected set; }
 
     #endregion
 
@@ -190,6 +192,8 @@ public abstract class Scene : IDisposable
         }
         IsDisposed = true;
     }
+
+    public virtual void BuildUi() { }
     #endregion
 }
 #endregion

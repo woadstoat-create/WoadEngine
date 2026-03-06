@@ -14,6 +14,7 @@ using WoadEngine.Input;
 using WoadEngine.Audio;
 using System.Security.Cryptography;
 using WoadEngine.Diagnostics;
+using WoadEngine.UI;
 
 namespace WoadEngine;
 
@@ -33,6 +34,8 @@ public class Core : Game
     public static bool ExitOnEscape { get; set; }
     public static AudioController Audio { get; private set; }
     public static VersionOverlay VersionOverlay { get; private set; }
+
+    public static UiManager Ui { get; private set; } = null!;
 
     private enum TransitionPhase
     {
@@ -95,6 +98,8 @@ public class Core : Game
 
         Audio = new AudioController();
 
+        Ui = new UiManager();
+
         Logger.Init();
         Logger.Info("Game initializing...");
     }
@@ -115,6 +120,8 @@ public class Core : Game
 
     protected override void Update(GameTime gameTime)
     {
+        float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
         Input.Update(gameTime);
         Audio.Update();
 
@@ -130,6 +137,14 @@ public class Core : Game
             s_activeScene.Update(gameTime);
         }
 
+        var uiMouse = new UiMouseState(
+            Input.Mouse.Position,
+            Input.Mouse.IsButtonDown(MouseButton.Left),
+            Input.Mouse.WasButtonJustPressed(MouseButton.Left),
+            Input.Mouse.WasButtonJustReleased(MouseButton.Left));
+
+        Ui.Update(dt, GraphicsDevice.Viewport.Bounds, uiMouse);
+
         base.Update(gameTime);
     }
 
@@ -139,6 +154,8 @@ public class Core : Game
         {
             s_activeScene.Draw(gameTime);
         }
+
+        Ui.Draw();
 
         DrawFadeOverlay();
 
