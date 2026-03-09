@@ -15,6 +15,7 @@ using WoadEngine.Audio;
 using System.Security.Cryptography;
 using WoadEngine.Diagnostics;
 using WoadEngine.UI;
+using WoadEngine.Persistence;
 
 namespace WoadEngine;
 
@@ -36,6 +37,8 @@ public class Core : Game
     public static VersionOverlay VersionOverlay { get; private set; }
 
     public static UiManager Ui { get; private set; } = null!;
+
+    public static SaveManager Saves { get; private set; } = null;
 
     private enum TransitionPhase
     {
@@ -99,6 +102,7 @@ public class Core : Game
         Audio = new AudioController();
 
         Ui = new UiManager();
+        Saves = new SaveManager(new JsonSaveSerializer(), new DefaultSavePathProvider());
 
         Logger.Init();
         Logger.Info("Game initializing...");
