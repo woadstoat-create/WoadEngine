@@ -7,6 +7,8 @@ public sealed class UiStyle
 {
     public SpriteFont? Font { get; set; }
 
+    public Color TextColor { get; set; } = Color.White;
+
     public Color ForegroundColor { get; set; } = Color.White;
     public Color BackgroundColor { get; set; } = Color.Transparent;
     public Color BorderColor { get; set; } = Color.Transparent;

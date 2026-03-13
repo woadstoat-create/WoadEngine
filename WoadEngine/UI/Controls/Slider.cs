@@ -140,7 +140,7 @@ public class Slider : UiElement
         if (fillWidth > 0)
         {
             var fillRect = new Rectangle(track.X, track.Y, fillWidth, track.Height);
-            spriteBatch.Draw(whitePixel, fillRect, FillColor);
+            Core.SpriteBatch.Draw(whitePixel, fillRect, FillColor);
         }
 
         Color thumbColor = ThumbColor;

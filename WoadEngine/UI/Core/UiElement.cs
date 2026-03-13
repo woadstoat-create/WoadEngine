@@ -47,7 +47,7 @@ public abstract class UiElement
             Logger.Exception(new InvalidOperationException("UI child already has a parent."));
 
         child.Parent = this;
-        _children.Add(this);
+        _children.Add(child);
     }
 
     public virtual void RemoveChild(UiElement child)

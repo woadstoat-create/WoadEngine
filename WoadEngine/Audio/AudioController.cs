@@ -12,6 +12,29 @@ public class AudioController : IDisposable
     private float _previousSongVolume;
     private float _previousSoundEffectVolume;
     public bool IsMuted { get; private set; }
+    private float _masterVolume = 1.0f;
+
+    public float MasterVolume
+    {
+        get
+        {
+            if (IsMuted)
+            {
+                return 0.0f;
+            }
+
+            return _masterVolume;
+        }
+        set
+        {
+            if (IsMuted)
+            {
+                return;
+            }
+
+            _masterVolume = Math.Clamp(value, 0.0f, 1.0f);
+        }
+    }
 
     public float SongVolume
     {
@@ -31,7 +54,7 @@ public class AudioController : IDisposable
                 return;
             }
 
-            MediaPlayer.Volume = Math.Clamp(value, 0.0f, 1.0f);
+            MediaPlayer.Volume = Math.Clamp(value * _masterVolume, 0.0f, 1.0f);
         }
     }
 
@@ -53,7 +76,7 @@ public class AudioController : IDisposable
                 return;
             }
 
-            SoundEffect.MasterVolume = Math.Clamp(value, 0.0f, 1.0f);
+            SoundEffect.MasterVolume = Math.Clamp(value * _masterVolume, 0.0f, 1.0f);
         }
     }
 
