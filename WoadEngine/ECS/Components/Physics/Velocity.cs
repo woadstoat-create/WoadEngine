@@ -31,6 +31,8 @@ public struct Velocity
     /// Linear velocity in world units per second.
     /// </summary>
     public Vector3 Value;
+    public Vector3 AngularValue;
+    public Vector3 Drag;
     #endregion
 
     #region Factories
