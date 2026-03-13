@@ -40,7 +40,7 @@ public sealed class Camera2DSystem : ISystem
                 Matrix.CreateScale(cam.Zoom, cam.Zoom, 1f) *
                 Matrix.CreateTranslation(origin.X, origin.Y, 0f);
 
-            world.SetActiveCamera2D(entity);
+            world.SetActiveCamera(entity);
             return;
         }
     }
