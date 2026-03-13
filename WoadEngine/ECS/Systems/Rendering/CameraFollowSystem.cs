@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using WoadEngine.ECS;
 using WoadEngine.ECS.Components.Physics;
+using WoadEngine.ECS.Components.Gameplay;
 
 namespace WoadEngine.ECS.Systems.Rendering;
 
