@@ -268,7 +268,9 @@ public sealed class World
     }
     #endregion
 
-    internal void SetActiveCamera(int entityId) => _activeCameraId = entityId;
+    public void SetActiveCamera(int entityId) => _activeCameraId = entityId;
+
+    public int GetActiveCameraId() => return _activeCameraId;
 
     public bool TryGetActiveCamera(out int entityId)
     {
