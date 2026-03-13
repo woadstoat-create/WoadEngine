@@ -154,7 +154,7 @@ public sealed class World
         if (!IsAlive(e))
             return false;
 
-        DestroyEntity(e);
+        Commands.Destroy(e);
         return true;
     }
     #endregion
