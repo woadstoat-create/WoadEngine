@@ -270,7 +270,10 @@ public sealed class World
 
     public void SetActiveCamera(int entityId) => _activeCameraId = entityId;
 
-    public int GetActiveCameraId() => return _activeCameraId;
+    public int GetActiveCameraId()
+    {
+        return _activeCameraId;
+    }
 
     public bool TryGetActiveCamera(out int entityId)
     {
