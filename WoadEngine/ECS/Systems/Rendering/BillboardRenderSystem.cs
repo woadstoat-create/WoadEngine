@@ -47,10 +47,18 @@ public sealed class BillboardRenderSystem : IRenderSystem
         var items = GetItemsSpan(count);
         int itemCount = 0;
 
-        for (int di = 0; di < items.Length; di++)
+        for (int di = 0; di < billboards.Count; di++)
         {
             int entityId = billboards.DenseEntities[di];
             ref var sprite = ref billboards.DenseComponents[di];
+
+            if (!transforms.Has(entityId))
+                continue;
+
+            ref var tr = ref transforms.Get(entityId);
+
+            float sortKey = Vector3.DistanceSquared(tr.Position, camTr.Position);
+            items[itemCount++] = new BillboardItem(entityId, sortKey, tr, sprite);
         }
 
         items = items.Slice(0, itemCount);
@@ -171,8 +179,12 @@ public sealed class BillboardRenderSystem : IRenderSystem
         _verts[3] = new VertexPositionTexture(p3, uv3);
 
         // Two triangles: 0-1-2, 2-1-3
-        _indices[0] = 0; _indices[1] = 1; _indices[2] = 2;
-        _indices[3] = 2; _indices[4] = 1; _indices[5] = 3;
+        _indices[i + 0] = (short)(v + 0);
+        _indices[i + 1] = (short)(v + 1);
+        _indices[i + 2] = (short)(v + 2);
+        _indices[i + 3] = (short)(v + 2);
+        _indices[i + 4] = (short)(v + 1);
+        _indices[i + 5] = (short)(v + 3);
 
         v += 4;
         i += 6;
