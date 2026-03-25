@@ -16,23 +16,12 @@ public sealed class ModelCache
 
     public ModelCache() { }
 
-    public Model Get(string assetName, Effect? effect = null)
+    public Model Get(string assetName)
     {
-        if(_models.TryGetValue(assetName, out var model))
+        if (_models.TryGetValue(assetName, out var model))
             return model;
 
         model = Core.Content.Load<Model>(assetName);
-
-        List<Texture2D> modelTextures = new List<Texture2D>();
-
-        foreach (ModelMesh mesh in model.Meshes)
-        {
-            foreach (ModelMeshPart meshPart in mesh.MeshParts)
-            {
-                meshPart.Effect = effect.Clone();
-            }
-        }
-
         _models.Add(assetName, model);
         return model;
     }
