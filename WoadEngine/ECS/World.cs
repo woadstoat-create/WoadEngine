@@ -55,6 +55,8 @@ public sealed class World
     /// </summary>
     private readonly Dictionary<Type, IComponentStore> _stores = new();
     
+    private bool[] _alive;
+
     public EventBus Events = new();
     public CommandBuffer Commands { get; } = new();
 
@@ -95,12 +97,18 @@ public sealed class World
 
         // Ensure the generation table can address this entity ID.
         if (id >= _generations.Length)
-            Array.Resize(ref _generations, Math.Max(id + 1, _generations.Length * 2));
-        
+        {
+            int n = Math.Max(id + 1, _generations.Length * 2);
+            Array.Resize(ref _generations, n);
+            Array.Resize(ref _alive, n);
+        }
+
         // Ensure existing stores can address all current entity IDs
         foreach (var store in _stores.Values)
             store.EnsureEntityCapacity(_generations.Length);
         
+        _alive[id] = true;
+
         return new Entity(id, _generations[id]);
     }
 
@@ -116,7 +124,7 @@ public sealed class World
     /// </remarks>
     public bool IsAlive(Entity e)
     {
-        return e.ID >= 0 && e.ID < _generations.Length && _generations[e.ID] == e.Gen;
+        return e.ID >= 0 && e.ID < _generations.Length && _alive[e.ID] && _generations[e.ID] == e.Gen;
     }
 
     /// <summary>
@@ -137,6 +145,7 @@ public sealed class World
             store.RemoveEntity(e.ID);
 
         // Invalidate stale handles for this ID and recycle it.
+        _alive[e.ID] = false;
         _generations[e.ID]++;
         _freeIds.Push(e.ID);
     }
