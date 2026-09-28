@@ -75,6 +75,7 @@ public sealed class World
     public World(int initialEntityCapacity = 1024)
     {
         _generations = new int[initialEntityCapacity];
+        _alive = new bool[initialEntityCapacity];
         _freeIds = new Stack<int>();
         _nextId = 0;
     }
