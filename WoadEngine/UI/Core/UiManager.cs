@@ -26,7 +26,6 @@ public sealed class UiManager
     {
         _whitePixel = new Texture2D(Core.GraphicsDevice, 1, 1);
         _whitePixel.SetData(new[] { Color.White });
-
     }
 
     public void Update(float dt, Rectangle viewportRect, UiMouseState mouse)

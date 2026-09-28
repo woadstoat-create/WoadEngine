@@ -201,6 +201,18 @@ public sealed class World
     }
 
     /// <summary>
+    /// Destroys all entities of type T
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public void DestroyAllWith<T>() where T : struct
+    {
+        foreach (var id in GetStore<T>().DenseEntities)
+        {
+            TryDestroyById(id);
+        }
+    }
+
+    /// <summary>
     /// Returns the component store for <typeparamref name="T"/>, creating it if needed.
     /// </summary>
     /// <remarks>

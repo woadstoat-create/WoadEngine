@@ -181,6 +181,12 @@ public sealed class ComponentStore<T> : IComponentStore where T : struct
         _sparse[entityId] = 0;
     }
 
+    public bool TryGetFirst(out int entityId)
+    {
+        entityId = _count > 0 ? _denseEntities[0] : -1;
+        return _count > 0;
+    }
+
     void IComponentStore.EnsureEntityCapacity(int entityCapacity) => EnsureEntityCapacity(entityCapacity);
 
     void IComponentStore.RemoveEntity(int entityId) => Remove(entityId);
@@ -195,6 +201,7 @@ public sealed class ComponentStore<T> : IComponentStore where T : struct
         ref var c = ref Add(entityId);
         c = (T)value;
     }
+
     #endregion
 
 }
