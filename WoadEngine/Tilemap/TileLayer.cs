@@ -14,7 +14,9 @@ public sealed class TileLayer
 
     public bool Visible { get; set; } = true;
     public float Opacity { get; set; } = 1f;
+
     public float Depth { get; set; } = 0.5f;
+
     public Vector2 Parallax { get; set; } = Vector2.One;
 
     public bool CollisionEnabled { get; set; } = false;
@@ -30,24 +32,21 @@ public sealed class TileLayer
         _tiles = new int[width * height];
     }
 
+    public bool InBounds(int x, int y) => (uint)x < (uint)Width && (uint)y < (uint)Height;
+
     public int Get(int x, int y)
     {
-        if ((uint)x >= (uint)Width || (uint)y >= (uint)Height) return 0;
+        if (!InBounds(x, y)) return 0;
         return _tiles[(y * Width) + x];
     }
 
     public void Set(int x, int y, int tileId)
     {
-        if ((uint)x >= (uint)Width || (uint)y >= (uint)Height) return;
+        if (!InBounds(x, y)) return;
         _tiles[(y * Width) + x] = tileId;
-
-        // Mark chunk dirty
     }
 
-    public void Fill(int tileId)
-    {
-        System.Array.Fill(_tiles, tileId);
-       
-        // Mark chunk dirty
-    }
+    public void Fill(int tileId) => Array.Fill(_tiles, tileId);
+
+    public void Clear() => Array.Clear(_tiles);
 }

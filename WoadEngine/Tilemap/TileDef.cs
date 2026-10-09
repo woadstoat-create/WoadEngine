@@ -3,7 +3,16 @@ using WoadEngine.Rendering;
 
 namespace WoadEngine.Tiles;
 
-public readonly struct TiledDef
+[System.Flags]
+public enum TileFlags : ushort
+{
+    None = 0,
+    Solid = 1 << 0,
+    OneWay = 1 << 1,
+    Damage = 1 << 2,
+}
+
+public readonly struct TileDef
 {
     public readonly int Id;
 
@@ -13,7 +22,7 @@ public readonly struct TiledDef
 
     public readonly string? Tag;
 
-    public TiledDef(int id, TextureRegion region, TileFlags flags = TileFlags.None, string? tag = null)
+    public TileDef(int id, TextureRegion region, TileFlags flags = TileFlags.None, string? tag = null)
     {
         Id = id;
         Region = region;
@@ -22,13 +31,6 @@ public readonly struct TiledDef
     }
 
     public bool IsSolid => (Flags & TileFlags.Solid) != 0;
-}
-
-[System.Flags]
-public enum TileFlags : ushort
-{
-    None = 0,
-    Solid = 1 << 0,
-    OneWay = 1 << 1,
-    Damage = 1 << 2,
+    public bool IsOneWay => (Flags & TileFlags.OneWay) != 0;
+    public bool IsDamage => (Flags & TileFlags.Damage) != 0;
 }

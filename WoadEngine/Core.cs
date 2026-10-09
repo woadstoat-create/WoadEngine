@@ -16,6 +16,7 @@ using System.Security.Cryptography;
 using WoadEngine.Diagnostics;
 using WoadEngine.UI;
 using WoadEngine.Persistence;
+using System.IO;
 
 namespace WoadEngine;
 
@@ -78,7 +79,7 @@ public class Core : Game
 
         Content = base.Content;
 
-        Content.RootDirectory = "Content";
+        Content.RootDirectory = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath) ?? AppContext.BaseDirectory, "Content");
 
         IsMouseVisible = true;
 
