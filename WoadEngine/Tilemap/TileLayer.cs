@@ -48,5 +48,16 @@ public sealed class TileLayer
 
     public void Fill(int tileId) => Array.Fill(_tiles, tileId);
 
+    public void FillRect(int x, int y, int width, int height, int tileId)
+    {
+        for (int cy = y; cy < y + height; cy++)
+        {
+            for (int cx = x; cx < x + width; cx++)
+            {
+                Set(cx, cy, tileId);
+            }
+        }
+    }
+
     public void Clear() => Array.Clear(_tiles);
 }
