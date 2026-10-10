@@ -79,7 +79,7 @@ public class Core : Game
 
         Content = base.Content;
 
-        Content.RootDirectory = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath) ?? AppContext.BaseDirectory, "Content");
+        Content.RootDirectory = "Content";
 
         IsMouseVisible = true;
 
