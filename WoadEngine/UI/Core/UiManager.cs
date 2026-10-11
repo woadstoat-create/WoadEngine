@@ -100,6 +100,14 @@ public sealed class UiManager
         UpdateHoverFlags(SceneRoot, hovered);
     }
 
+    public void SetSceneRoot(UiElement? root)
+    {
+        SceneRoot = root;
+        HoveredElement = null;
+        PressedElement = null;
+        SetFocus(null);
+    }
+
     public void Draw()
     {
         GlobalRoot?.Draw(_whitePixel);

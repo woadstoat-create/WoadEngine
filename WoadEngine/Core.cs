@@ -160,7 +160,9 @@ public class Core : Game
             s_activeScene.Draw(gameTime);
         }
 
-        
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
+        Ui.Draw();
+        SpriteBatch.End();
 
         DrawFadeOverlay();
 
@@ -296,6 +298,11 @@ public class Core : Game
         s_nextScene = null;
 
         if (s_activeScene != null)
+        {
             s_activeScene.Initialize();
+            s_activeScene.BuildUi();
+        }
+
+        Ui.SetSceneRoot(s_activeScene?.UiRoot);
     }
 }
